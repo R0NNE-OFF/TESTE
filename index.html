@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Contador Regressivo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('Fundo.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+    #contador {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: rgb(155, 37, 37);
+    }
+  </style>
+</head>
+<body>
+  <h1>Contagem regressiva para 16/02/2026 às 14:25</h1>
+  <div id="contador"></div>
+
+  <script>
+    const targetDate = new Date("Fev 16, 2026 14:25:00").getTime();
+
+    function atualizarContador() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("contador").innerHTML = "⏰ Chegou a hora!";
+        return;
+      }
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("contador").innerHTML =
+        `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+    }
+
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
+  </script>
+  <h1>Te vejo logo logo meu amor</h1>
+</body>
+</html>
